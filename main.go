@@ -1,18 +1,20 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/JMustang/jobsopportunities/config"
 	"github.com/JMustang/jobsopportunities/router"
 )
 
-func main() {
+var (
+	logger *config.Logger
+)
 
+func main() {
+	logger = config.GetLogger("main")
 	// Inicializando Config
 	err := config.Init()
 	if err != nil {
-		fmt.Println(err)
+		logger.Errorf("Config initialization error: %v", err)
 		return
 	}
 

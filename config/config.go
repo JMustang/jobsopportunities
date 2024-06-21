@@ -1,11 +1,24 @@
 package config
 
-import "gorm.io/gorm"
+import (
+	"errors"
+
+	"gorm.io/gorm"
+)
 
 var (
-	db *gorm.DB
+	db     *gorm.DB
+	logger *Logger
 )
 
 func Init() error {
-	return nil
+	return errors.New("Fake error!")
+}
+
+func GetLogger(p string) *Logger {
+	// init logger
+	logger = NewLogger(p)
+
+	return logger
+	// init db
 }
