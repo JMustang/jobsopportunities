@@ -28,5 +28,11 @@ func (r *CreateOpeningRequest) Validate() error {
 	if r.Link == "" {
 		return errParamIsRequired("link", "string")
 	}
+	if r.Remote == nil {
+		return errParamIsRequired("remote", "bool")
+	}
+	if r.Salary <= 0 {
+		return errParamIsRequired("salary", "int64")
+	}
 	return nil
 }
