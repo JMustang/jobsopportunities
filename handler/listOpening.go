@@ -3,11 +3,17 @@ package handler
 import (
 	"net/http"
 
+	"github.com/JMustang/jobsopportunities/schemas"
 	"github.com/gin-gonic/gin"
 )
 
 func ListOpeningHandler(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, gin.H{
-		"message": "GET Opening!",
-	})
+	openins := []schemas.Opening{}
+
+	if err := db.Find(&openins).Error; err != nil {
+		sendError(ctx, http.StatusInternalServerError, "error listing openings")
+		return
+	}
+
+	sendSuccess(ctx, "list-openings", openins)
 }
