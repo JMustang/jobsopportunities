@@ -1,6 +1,6 @@
 .PHONY: default run build test docs clean
 # Variables
-APP_NAME=jobpportunities
+APP_NAME=jobsopportunities
 
 # Tasks
 default: run-with-docs

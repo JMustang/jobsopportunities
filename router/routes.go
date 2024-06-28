@@ -16,7 +16,6 @@ func initializeRoutes(r *gin.Engine) {
 	docs.SwaggerInfo.BasePath = basePath
 
 	// Definindo as rotas
-
 	v1 := r.Group(basePath)
 	{
 		v1.GET("/opening", handler.ShowOpeningHandler)
@@ -25,6 +24,7 @@ func initializeRoutes(r *gin.Engine) {
 		v1.DELETE("/opening", handler.DeleteOpeningHandler)
 		v1.GET("/openings", handler.ListOpeningHandler)
 	}
+
 	// Inicializando o Swagger
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 }
